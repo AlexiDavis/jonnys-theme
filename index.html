@@ -2,22 +2,195 @@
 <html>
     <head>
         <title>Title</title>
-        <link rel="stylesheet" href="style.css">
+        <link href="https://fonts.googleapis.com/css?family=Taviraj|Cairo|Prompt" rel="stylesheet">
+        <!-- Cairo: main text, Taviraj: h1's, Prompt: h2's & lower -->
+        <!-- frosted steel -->
+        <style type="text/css">
+            /* Colors: #EFEFF0 #210064 #000088 #8471A7 */
+            body{background:#EFEFF0;color:#210064;font:16pt/20pt Cairo,sans-serif;width:1000px;margin:0 auto;position:relative;}
+            a{font-family:Prompt,sans-serif;color:#000088;}
+            a:hover{color:#8471A7;}
+            h1{font-family:Taviraj,serif;}
+            h2,h3,h4,h5,h6{font-family:Prompt,sans-serif;}
+            img{border-bottom:#efe 3px solid;border-left:#696 3px solid;border-right:#242 2px solid;border-top:#343 2px solid;max-width:95%;display:block;margin:0 auto;}
+            blockquote{border-left:3px solid #8411A7;padding-left:10px;margin-left:10px;}
+            header{width:25%;display:inline-block;vertical-align:top;line-height:1.5em;text-align:center;position:fixed;bottom:0;top:0;right:10px;color:#8471A7;}
+            header img{border:0;max-width:170px;}
+            header h1{line-height:1.1em;}
+            header nav{display:block;width:100%;background:#EFEFF0;font-size:.8em;text-transform:lowercase;}
+            header nav ul{list-style:none;padding:0;}
+            header nav ul li{display:inline;padding-left:1em;}
+            header span{font-size:.8em;line-height:0;}
+            #posts{width:50%;display:inline-block;vertical-align:top;margin:0 auto;list-style:none;padding-right:45%;}
+            .a_post{display:block;width:95%;margin:1em auto;padding:1em;background:rgba(132, 113, 167, .8);}
+            .a_post:first-of-type{margin-top:0;}
+            .a_post:last-of-type{margin-bottom:0;}
+            .a_post a{color:#EFEFF0;}
+            .quote-post{background:#EFEFF0;padding:1em;color:#8471A7;}
+            .quote-post a{color:#000088;}
+            .question{background:rgba(0,0,30,.8);padding:1em;position:relative;color:#8471A7;}
+            .question p{max-width:80%;}
+            .question span{background:#EFEFF0;max-width:20%;max-height:100%;display:block;padding:.25em;position:absolute;bottom:0;right:0;text-align:right;overflow:hidden;}
+            .post_meta{display:block;width:80%;background:#EFEFF0;color:#8471A7;padding:.25em 1em;margin:-1.5em auto 0;border-bottom:2px solid rgba(38, 1, 52, .6);border-right:2px solid rgba(38, 1, 64, .6);border-left:1px solid #DFDFD0;}
+            .post_meta a{color:#000088;}
+            ol.notes {
+                padding: 0px;
+                margin: 25px 0px;
+                list-style-type: none;
+                border-bottom: solid 1px #ccc;
+                background:rgba(132, 167, 113, .8);
+                font-size:.8em;text-transform:lowercase;
+            }
+
+            ol.notes a{color:#EFEFF0;}
+
+            ol.notes li.note {
+                border-top: solid 1px #ccc;
+                padding: 10px;
+            }
+
+            ol.notes li.note img.avatar {
+                display:none;
+            }
+
+            ol.notes li.note span.action {
+                font-weight: bold;
+            }
+
+            ol.notes li.note .answer_content {
+                font-weight: normal;
+                display:block;
+                padding: 4px 10px;
+                margin: 10px 0px 0px 25px;
+                background:#EFEFF0;
+                color:#8471A7;
+                border-radius:15px;
+                font-size:1.1em;
+                border:0px;
+            }
+
+            ol.notes li.note blockquote {
+                padding: 4px 10px;
+                margin: 10px 0px 0px 25px;
+                background:#EFEFF0;
+                color:#8471A7;
+                border-radius:15px;
+                font-size:1.1em;
+                border:0px;
+            }
+
+            ol.notes li.note blockquote a {
+                text-decoration: none;
+                color:#8471A7;
+            }
+            {CustomCSS}
+        </style>
     </head>
     <body>
         <header>
-            <h1>Title</h1>
-            <span>Description</span>
-        </header>
-        <ul id="post-list">
-            <li class="a-post">The posts go here</li>
-        </ul>
-        <footer>
-            <nav>
+            <a href="/"><img src="http://static.tumblr.com/2gqpfpy/bPko96v6j/2016-06-09_20.55.59.png" alt="A noble Knight"></a>
+            <a href="/"><h1>{Title}</h1></a>
+            <span>{block:Description}{Description}{/block:Description}</span>
+            <nav id="blog-links">
                 <ul>
-                    <li>Links</li>
+				    <li><a href="/">Home</a></li>
+                    {block:HasPages}{block:Pages}
+                        <li><a href="{URL}">{Label}</a></li>
+                    {/block:Pages}{/block:HasPages}
+				    {block:AskEnabled}
+                        <li><a href="/ask">Ask</a></li>
+				    {/block:AskEnabled}
+				    {block:SubmissionsEnabled}
+                        <li><a href="/submit">Submit</a></li>
+				    {/block:SubmissionsEnabled}
+                    <li><a href="/archive">Archive</a></li>
+                    <li><a href="http://alexidavis.com">Theme</a></li>
                 </ul>
             </nav>
-        </footer>
+            <nav id="pagination">
+                <ul>
+                    {block:IndexPage}
+    			    <li>
+    			    {block:NextPage}<a href="{NextPage}">{/block:NextPage}&laquo;&nbsp;Older{block:NextPage}</a>{/block:NextPage}
+    			    </li>
+                    <li>
+                    {block:PreviousPage}<a href="{PreviousPage}">{/block:PreviousPage}Newer&nbsp;&raquo;{block:PreviousPage}</a>{/block:PreviousPage}
+                    </li>
+                    {/block:IndexPage}
+                    {block:PermalinkPage}
+    			    <li>
+    			    {block:NextPost}<a href="{NextPost}">{/block:NextPost}&laquo;&nbsp;Older{block:NextPost}</a>{/block:NextPost}
+    			    </li>
+                    <li>
+                    {block:PreviousPost}<a href="{PreviousPost}">{/block:PreviousPost}Newer&nbsp;&raquo;{block:PreviousPost}</a>{/block:PreviousPost}
+                    </li>
+                    {/block:PermalinkPage}
+                </ul>
+            </nav>
+        </header>
+                <ul id="posts">{block:Posts}
+            <li class="a_post">
+                <!-- Posts that have a title -->
+                {block:Text}<h3>{Title}</h3>{/block:Text}
+                {block:Link}<h3>&gt;&gt;&nbsp;<a href="{URL}" {Target}>{Name}</a></h3>{/block:Link}
+                <!-- Media -->
+                {block:Photo}<p><img src="{PhotoURL-500}" alt="{PhotoAlt}"></p>{/block:Photo}
+                {block:Photoset}
+                    {block:Photos}
+                        <p><img src="{PhotoURL-500}" alt="{PhotoAlt}"></p>
+                        <p>{block:Caption}{Caption}{/block:Caption}</p>
+                    {/block:Photos}
+                {/block:Photoset}
+                {block:Video}{Video-500}{/block:Video}
+                {block:Audio}{AudioEmbed-500}{/block:Audio}
+                <!-- Text / Comments -->
+                {block:Caption}{Caption}{/block:Caption}
+                {block:Text}{Body}{/block:Text}
+                {block:Quote}
+                    <blockquote class="quote-post">{Quote}</blockquote>
+                    {block:Source}
+                        <p>- {Source}</p>
+                    {/block:Source}
+                {/block:Quote}
+                {block:Link}
+                    {block:Description}
+                        {Description}
+                    {/block:Description}
+                {/block:Link}
+                {block:Chat}
+					<ul class="chat">
+						{block:Lines}
+							<li class={Alt}>
+								{block:Label}<strong>{Label}</strong>{/block:Label} {Line}
+							</li>
+						{/block:Lines}
+					</ul>
+				{/block:Chat}
+				{block:Answer}
+				    <blockquote class="question"><p>{Question}</p><span>{Asker}</span></blockquote>
+				    {Answer}
+				{/block:Answer}
+			</li>
+                <span class="post_meta">
+                <!-- Tags -->
+                    {block:HasTags}
+			    		<h5 class="tags">
+	        				{block:Tags}<a href="{TagURL}">#{Tag}</a>&nbsp;{/block:Tags}
+					    </h5>
+				    {/block:HasTags}
+                <!-- Meta - time ago, # notes, permalink / If post page, date posted, #notes, via & source -->
+                        <h5>
+                            {block:IndexPage}
+                                posted {TimeAgo} | {block:NoteCount}{NoteCountWithLabel} |{block:NoteCount} <a href="{Permalink}">permalink</a>
+                            {/block:IndexPage}
+                            {block:PermalinkPage}
+                                {DayOfMonth}{DayOfMonthSuffix} of {Month}, {Year} at {12Hour}{AmPm} {block:NoteCount}| {NoteCountWithLabel}{block:NoteCount} {block:RebloggedFrom}| via <a href="{ReblogParentURL}">{ReblogParentName}</a>{/block:RebloggedFrom} {block:ContentSource}| by <a href="{SourceURL}">{SourceTitle}</a>{/block:ContentSource}
+                            {/block:PermalinkPage}
+                       </h5>
+                </span>
+                <!-- If post page, Notes content -->
+            {/block:Posts}
+            {PostNotes}
+        </ul>
     </body>
 </html>
