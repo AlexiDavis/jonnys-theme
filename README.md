@@ -1,8 +1,6 @@
 # Jonny's Theme
 This is a theme for my lovely friend Jonny who likes Knights and stuff.
 
-# CURRENTLY A WORK IN PROGRESS
-
 ## Instructions:
 
 1. Go to [http://tumblr.com/customize/](http://tumblr.com/customize/){your url}
@@ -13,4 +11,4 @@ This is a theme for my lovely friend Jonny who likes Knights and stuff.
 Voilà!
 
 If you have any issues, problems, questions, or requests, 
-[my askbox is always open](http://tittenkits.tumblr.com/ask)
+[my askbox is always open](http://tittenkits.tumblr.com/ask) or [use the contact form on my site](http://alexidavis.com/contact)
