@@ -1,6 +1,8 @@
 # Jonny's Theme
 This is a theme for my lovely friend Jonny who likes Knights and stuff.
 
+##[View demo](http://jonnystheme.tumblr.com/)
+
 ## Instructions:
 
 1. Go to [http://tumblr.com/customize/](http://tumblr.com/customize/){your url}
